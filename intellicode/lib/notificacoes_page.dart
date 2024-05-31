@@ -10,6 +10,6 @@ class NotificacoesPage extends StatefulWidget {
 class _NotificacoesPageState extends State<NotificacoesPage> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return SizedBox();
   }
 }

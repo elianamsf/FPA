@@ -49,7 +49,7 @@ class _LoginPageState extends State<LoginPage> {
                           TextField(
                             onChanged: (text) => {email = text},
                             keyboardType: TextInputType.emailAddress,
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               label: Text('E-mail'),
                               border: OutlineInputBorder(),
                             ),
@@ -58,7 +58,7 @@ class _LoginPageState extends State<LoginPage> {
                           TextField(
                             onChanged: (text) => {password = text},
                             obscureText: true,
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               label: Text('Password'),
                               border: OutlineInputBorder(),
                             ),
@@ -70,12 +70,12 @@ class _LoginPageState extends State<LoginPage> {
                               onPressed: () {
                                 Navigator.of(context).pushNamed('/home');
                               },
+                              style: raisedButtonStyle,
                               child: Text(
                                 'Entrar',
                                 textAlign: TextAlign.center,
                                 selectionColor: Colors.purple[900],
                               ),
-                              style: raisedButtonStyle,
                             ),
                           )
                         ],
