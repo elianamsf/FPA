@@ -29,29 +29,39 @@ class _LoginPageState extends State<LoginPage> {
                     height: 200,
                     child: Image.asset('assets/images/logo1.jpg'),
                   ),
-                  TextField(
-                    onChanged: (text) => {email = text},
-                    keyboardType: TextInputType.emailAddress,
-                    decoration: InputDecoration(
-                      label: Text('E-mail'),
-                      border: OutlineInputBorder(),
+                  Card(
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                          left: 12, right: 12, top: 20, bottom: 12),
+                      child: Column(
+                        children: [
+                          TextField(
+                            onChanged: (text) => {email = text},
+                            keyboardType: TextInputType.emailAddress,
+                            decoration: InputDecoration(
+                              label: Text('E-mail'),
+                              border: OutlineInputBorder(),
+                            ),
+                          ),
+                          SizedBox(height: 10),
+                          TextField(
+                            onChanged: (text) => {password = text},
+                            obscureText: true,
+                            decoration: InputDecoration(
+                              label: Text('Password'),
+                              border: OutlineInputBorder(),
+                            ),
+                          ),
+                          SizedBox(height: 15),
+                          ElevatedButton(
+                              onPressed: () {
+                                Navigator.of(context).pushNamed('/home');
+                              },
+                              child: Text('Entrar'))
+                        ],
+                      ),
                     ),
                   ),
-                  SizedBox(height: 10),
-                  TextField(
-                    onChanged: (text) => {password = text},
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      label: Text('Password'),
-                      border: OutlineInputBorder(),
-                    ),
-                  ),
-                  SizedBox(height: 15),
-                  ElevatedButton(
-                      onPressed: () {
-                        Navigator.of(context).pushReplacementNamed('/home');
-                      },
-                      child: Text('Entrar'))
                 ],
               ),
             ),
