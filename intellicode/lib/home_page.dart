@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:intellicode/app_controller.dart';
 
 class HomePage extends StatefulWidget {
@@ -31,6 +32,43 @@ class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(
+        child: Column(
+          children: [
+            ListTile(
+              leading: Icon(Icons.home),
+              title: Text('Inicio'),
+              subtitle: Text('Tela de início'),
+              onTap: () => Navigator.of(context).pushReplacementNamed('/home'),
+            ),
+            ListTile(
+              leading: Icon(Icons.commit),
+              title: Text('Commits'),
+              subtitle: Text('Status dos Commits'),
+              onTap: () =>
+                  Navigator.of(context).pushReplacementNamed('/commits'),
+            ),
+            ListTile(
+              leading: Icon(Icons.notifications),
+              title: Text('Notificaçoes'),
+              subtitle: Text('Histórico de Notificações'),
+              onTap: () =>
+                  Navigator.of(context).pushReplacementNamed('/notificacoes'),
+            ),
+            ListTile(
+                leading: Icon(Icons.mode_night),
+                title: Text('Modo escuro'),
+                subtitle: Text('Alternar em modo escuro ou claro'),
+                onTap: () => CustomSwitch()),
+            ListTile(
+              leading: Icon(Icons.logout),
+              title: Text('Sair'),
+              subtitle: Text('Finalizar Sessão'),
+              onTap: () => Navigator.of(context).pushReplacementNamed('/home'),
+            )
+          ],
+        ),
+      ),
       appBar: AppBar(
         title: Text('IntelliCode'),
         actions: [

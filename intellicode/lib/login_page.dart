@@ -11,10 +11,20 @@ class _LoginPageState extends State<LoginPage> {
   String email = '';
   String password = '';
 
+  final ButtonStyle raisedButtonStyle = ElevatedButton.styleFrom(
+    foregroundColor: Colors.black87,
+    backgroundColor: Colors.purple[300],
+    /*minimumSize: Size(88, 36),
+    padding: EdgeInsets.symmetric(horizontal: 16),
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.all(Radius.circular(2)),
+    ),*/
+  );
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.purple,
         body: SingleChildScrollView(
           child: SizedBox(
             width: MediaQuery.of(context).size.width,
@@ -30,6 +40,7 @@ class _LoginPageState extends State<LoginPage> {
                     child: Image.asset('assets/images/logo1.jpg'),
                   ),
                   Card(
+                    color: Colors.purple[100],
                     child: Padding(
                       padding: const EdgeInsets.only(
                           left: 12, right: 12, top: 20, bottom: 12),
@@ -53,11 +64,20 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                           ),
                           SizedBox(height: 15),
-                          ElevatedButton(
+                          Container(
+                            width: double.infinity,
+                            child: ElevatedButton(
                               onPressed: () {
                                 Navigator.of(context).pushNamed('/home');
                               },
-                              child: Text('Entrar'))
+                              child: Text(
+                                'Entrar',
+                                textAlign: TextAlign.center,
+                                selectionColor: Colors.purple[900],
+                              ),
+                              style: raisedButtonStyle,
+                            ),
+                          )
                         ],
                       ),
                     ),
