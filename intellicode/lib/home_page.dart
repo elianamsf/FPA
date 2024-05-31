@@ -59,12 +59,12 @@ class HomePageState extends State<HomePage> {
                 leading: Icon(Icons.mode_night),
                 title: Text('Modo escuro'),
                 subtitle: Text('Alternar em modo escuro ou claro'),
-                onTap: () => CustomSwitch()),
+                onTap: () => AppController.instance.changeTheme()),
             ListTile(
               leading: Icon(Icons.logout),
               title: Text('Sair'),
               subtitle: Text('Finalizar Sessão'),
-              onTap: () => Navigator.of(context).pushReplacementNamed('/home'),
+              onTap: () => Navigator.of(context).pushReplacementNamed('/'),
             )
           ],
         ),
