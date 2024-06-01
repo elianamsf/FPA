@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intellicode/components.dart';
 
 class NotificacoesPage extends StatefulWidget {
   const NotificacoesPage({super.key});
@@ -10,6 +11,6 @@ class NotificacoesPage extends StatefulWidget {
 class _NotificacoesPageState extends State<NotificacoesPage> {
   @override
   Widget build(BuildContext context) {
-    return SizedBox();
+    return CustomScaffold();
   }
 }

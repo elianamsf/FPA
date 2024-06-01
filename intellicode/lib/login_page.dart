@@ -68,6 +68,7 @@ class _LoginPageState extends State<LoginPage> {
                             width: double.infinity,
                             child: ElevatedButton(
                               onPressed: () {
+                                print('OI');
                                 Navigator.of(context).pushNamed('/home');
                               },
                               style: raisedButtonStyle,

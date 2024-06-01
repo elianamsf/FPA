@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intellicode/components.dart';
 
 class CommitsPage extends StatefulWidget {
   const CommitsPage({super.key});
@@ -10,6 +11,6 @@ class CommitsPage extends StatefulWidget {
 class _CommitsPageState extends State<CommitsPage> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return CustomScaffold();
   }
 }
