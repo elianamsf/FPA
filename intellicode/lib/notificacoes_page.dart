@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:intellicode/components.dart';
 
 class NotificacoesPage extends StatefulWidget {
-  const NotificacoesPage({super.key});
+  const NotificacoesPage({super.key, required this.title});
+
+  final String title;
 
   @override
   State<NotificacoesPage> createState() => _NotificacoesPageState();
@@ -11,6 +12,39 @@ class NotificacoesPage extends StatefulWidget {
 class _NotificacoesPageState extends State<NotificacoesPage> {
   @override
   Widget build(BuildContext context) {
-    return CustomScaffold();
+    return Scaffold(
+      //drawer: CustomDrawer(),
+      appBar: AppBar(
+        title: Text(widget.title),
+        //actions: const [CustomNotify()],
+        shadowColor: Colors.red,
+        backgroundColor: Colors.purple,
+      ),
+      body: ListView.builder(
+          itemCount: 20,
+          itemBuilder: (context, index) {
+            return Card(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: ListTile(
+                  title: Text('Notificação $index',
+                      style: TextStyle(fontSize: 22.0)),
+                  subtitle: Text('Clique para mais detalhes',
+                      style: TextStyle(fontSize: 22.0)),
+                  leading: Icon(Icons.notifications),
+                  onTap: () => Navigator.of(context).pushNamed('/notificacao'),
+                ),
+              ),
+            );
+/*
+            ListTile(
+              title: Text('Notificação $index'),
+              subtitle: Text('Clique para mais detalhes'),
+              leading: Icon(Icons.notifications),
+              onTap: () => Navigator.of(context).pushNamed('/notificacao'),
+            );
+            */
+          }),
+    );
   }
 }

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:intellicode/components.dart';
 
 class NotificacaoPage extends StatefulWidget {
-  const NotificacaoPage({super.key});
+  const NotificacaoPage({super.key, required this.title});
+
+  final String title;
 
   @override
   State<NotificacaoPage> createState() => _NotificacaoPageState();
@@ -11,6 +12,14 @@ class NotificacaoPage extends StatefulWidget {
 class _NotificacaoPageState extends State<NotificacaoPage> {
   @override
   Widget build(BuildContext context) {
-    return const CustomPage();
+    return Scaffold(
+      //drawer: CustomDrawer(),
+      appBar: AppBar(
+        title: Text(widget.title),
+        //actions: const [CustomNotify()],
+        shadowColor: Colors.red,
+        backgroundColor: Colors.purple,
+      ),
+    );
   }
 }

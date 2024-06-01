@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:intellicode/app_controller.dart';
 import 'package:intellicode/commit_page.dart';
 import 'package:intellicode/commits_page.dart';
-import 'package:intellicode/dashboard_page.dart';
 import 'package:intellicode/home_page.dart';
 import 'package:intellicode/login_page.dart';
 import 'package:intellicode/notificacao_page.dart';
@@ -27,13 +26,21 @@ class AppWidget extends StatelessWidget {
         initialRoute: '/',
         routes: {
           '/': (context) => LoginPage(),
-          '/home': (context) => MyHomePage(
+          '/home': (context) => const HomePage(
                 title: 'IntelliCode',
               ),
-          '/commits': (context) => CommitsPage(),
-          '/notificacoes': (context) => NotificacoesPage(),
-          '/commit': (context) => CommitPage(),
-          '/notificacao': (context) => NotificacaoPage()
+          '/commits': (context) => const CommitsPage(
+                title: 'Commits',
+              ),
+          '/notificacoes': (context) => const NotificacoesPage(
+                title: 'Notificações',
+              ),
+          '/commit': (context) => const CommitPage(
+                title: 'Commit ',
+              ),
+          '/notificacao': (context) => const NotificacaoPage(
+                title: 'Notificação',
+              )
         },
       ),
     );

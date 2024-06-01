@@ -14,11 +14,6 @@ class _LoginPageState extends State<LoginPage> {
   final ButtonStyle raisedButtonStyle = ElevatedButton.styleFrom(
     foregroundColor: Colors.black87,
     backgroundColor: Colors.purple[300],
-    /*minimumSize: Size(88, 36),
-    padding: EdgeInsets.symmetric(horizontal: 16),
-    shape: const RoundedRectangleBorder(
-      borderRadius: BorderRadius.all(Radius.circular(2)),
-    ),*/
   );
 
   @override
@@ -68,7 +63,6 @@ class _LoginPageState extends State<LoginPage> {
                             width: double.infinity,
                             child: ElevatedButton(
                               onPressed: () {
-                                print('OI');
                                 Navigator.of(context).pushNamed('/home');
                               },
                               style: raisedButtonStyle,
