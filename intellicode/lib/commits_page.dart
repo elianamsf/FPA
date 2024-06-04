@@ -31,7 +31,7 @@ class _CommitsPageState extends State<CommitsPage> {
                       Text('Commit $index', style: TextStyle(fontSize: 22.0)),
                   subtitle: Text('Clique para mais detalhes',
                       style: TextStyle(fontSize: 22.0)),
-                  leading: Icon(Icons.notifications),
+                  leading: Icon(Icons.commit),
                   onTap: () => Navigator.of(context).pushNamed('/commit'),
                 ),
               ),

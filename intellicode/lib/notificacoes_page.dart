@@ -29,21 +29,13 @@ class _NotificacoesPageState extends State<NotificacoesPage> {
                 child: ListTile(
                   title: Text('Notificação $index',
                       style: TextStyle(fontSize: 22.0)),
-                  subtitle: Text('Clique para mais detalhes',
+                  subtitle: const Text('Clique para mais detalhes',
                       style: TextStyle(fontSize: 22.0)),
-                  leading: Icon(Icons.notifications),
+                  leading: const Icon(Icons.notifications),
                   onTap: () => Navigator.of(context).pushNamed('/notificacao'),
                 ),
               ),
             );
-/*
-            ListTile(
-              title: Text('Notificação $index'),
-              subtitle: Text('Clique para mais detalhes'),
-              leading: Icon(Icons.notifications),
-              onTap: () => Navigator.of(context).pushNamed('/notificacao'),
-            );
-            */
           }),
     );
   }
