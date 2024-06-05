@@ -139,6 +139,16 @@ class _HomePageState extends State<HomePage> {
 
   ChartText chartText = ChartText("1 Commit", Colors.amber);
 
+  late User _currentUser;
+
+  @override
+  void initState() {
+    _currentUser = widget.user;
+    super.initState();
+  }
+
+  bool _isSigningOut = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -156,12 +166,9 @@ class _HomePageState extends State<HomePage> {
             const SizedBox(
               height: 5.0,
             ),
-            const Text(
-              "Maria da Silva",
-              style: TextStyle(
-                fontSize: 22.0,
-                fontWeight: FontWeight.w800,
-              ),
+            Text(
+              '${_currentUser.displayName}',
+              style: Theme.of(context).textTheme.bodyLarge,
             ),
             const SizedBox(
               height: 5.0,
@@ -191,7 +198,7 @@ class _HomePageState extends State<HomePage> {
             ListTile(
                 leading: Icon(Icons.person),
                 title: Text('Perfil'),
-                subtitle: Text('Informações Pessoais'),
+                subtitle: Text('Ver informações Pessoais'),
                 onTap: () async {
                   Navigator.of(context).push(
                     MaterialPageRoute(
@@ -220,9 +227,17 @@ class _HomePageState extends State<HomePage> {
               title: Text('Sair'),
               subtitle: Text('Finalizar Sessão'),
               onTap: () async {
-                FirebaseAuth.instance.signOut();
+                setState(() {
+                  _isSigningOut = true;
+                });
+                await FirebaseAuth.instance.signOut();
+                setState(() {
+                  _isSigningOut = false;
+                });
                 Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (context) => LoginPage()),
+                  MaterialPageRoute(
+                    builder: (context) => LoginPage(),
+                  ),
                 );
               },
             )
