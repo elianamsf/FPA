@@ -1,4 +1,4 @@
-package com.example.intellicode
+package com.intellicode
 
 import io.flutter.embedding.android.FlutterActivity
 
