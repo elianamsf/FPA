@@ -2,14 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:intellicode/app_controller.dart';
 import 'package:intellicode/commit_page.dart';
 import 'package:intellicode/commits_page.dart';
-import 'package:intellicode/home_page.dart';
 import 'package:intellicode/login_page.dart';
 import 'package:intellicode/notificacao_page.dart';
 import 'package:intellicode/notificacoes_page.dart';
 
 class AppWidget extends StatelessWidget {
   final String title;
-
   const AppWidget({super.key, required this.title});
 
   @override
@@ -26,9 +24,6 @@ class AppWidget extends StatelessWidget {
         initialRoute: '/',
         routes: {
           '/': (context) => LoginPage(),
-          '/home': (context) => const HomePage(
-                title: 'IntelliCode',
-              ),
           '/commits': (context) => const CommitsPage(
                 title: 'Commits',
               ),

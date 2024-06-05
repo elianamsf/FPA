@@ -1,128 +1,201 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:intellicode/home_page.dart';
+import 'package:intellicode/register_page.dart';
+import 'package:intellicode/utils/fire_auth.dart';
+import 'package:intellicode/utils/validator.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
-
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  _LoginPageState createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
-  String email = '';
-  String password = '';
+  final _formKey = GlobalKey<FormState>();
 
   final ButtonStyle raisedButtonStyle = ElevatedButton.styleFrom(
     foregroundColor: Colors.black87,
     backgroundColor: Colors.purple[300],
   );
 
+  final _emailTextController = TextEditingController();
+  final _passwordTextController = TextEditingController();
+
+  final _focusEmail = FocusNode();
+  final _focusPassword = FocusNode();
+
+  bool _isProcessing = false;
+
   Future<FirebaseApp> _initializeFirebase() async {
     FirebaseApp firebaseApp = await Firebase.initializeApp();
-    return firebaseApp;
-  }
 
-  static Future<User?> signInUsingEmailPassword({
-    required String email,
-    required String password,
-    required BuildContext context,
-  }) async {
-    FirebaseAuth auth = FirebaseAuth.instance;
-    User? user;
+    User? user = FirebaseAuth.instance.currentUser;
 
-    try {
-      UserCredential userCredential = await auth.signInWithEmailAndPassword(
-        email: email,
-        password: password,
+    if (user != null) {
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (context) => HomePage(
+            title: 'IntelliCode',
+            user: user,
+          ),
+        ),
       );
-      user = userCredential.user;
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
-        print('No user found for that email.');
-      } else if (e.code == 'wrong-password') {
-        print('Wrong password provided.');
-      }
     }
 
-    return user;
+    return firebaseApp;
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.purple,
-      body: FutureBuilder(
+    return GestureDetector(
+      onTap: () {
+        _focusEmail.unfocus();
+        _focusPassword.unfocus();
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('IntelliCode'),
+        ),
+        body: FutureBuilder(
           future: _initializeFirebase(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.done) {
-              return SingleChildScrollView(
-                child: SizedBox(
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height,
-                  child: Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          width: 200,
-                          height: 200,
-                          child: Image.asset('assets/images/logo1.jpg'),
-                        ),
-                        Card(
-                          color: Colors.purple[100],
-                          child: Padding(
-                            padding: const EdgeInsets.only(
-                                left: 12, right: 12, top: 20, bottom: 12),
-                            child: Column(
-                              children: [
-                                TextField(
-                                  onChanged: (text) => {email = text},
-                                  keyboardType: TextInputType.emailAddress,
-                                  decoration: const InputDecoration(
-                                    label: Text('E-mail'),
-                                    border: OutlineInputBorder(),
-                                  ),
+              return Padding(
+                padding: const EdgeInsets.only(left: 24.0, right: 24.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 24.0),
+                      child: Text(
+                        'Login',
+                        style: Theme.of(context).textTheme.displayLarge,
+                      ),
+                    ),
+                    Form(
+                      key: _formKey,
+                      child: Column(
+                        children: <Widget>[
+                          TextFormField(
+                            controller: _emailTextController,
+                            focusNode: _focusEmail,
+                            validator: (value) => Validator.validateEmail(
+                              email: value,
+                            ),
+                            decoration: InputDecoration(
+                              hintText: "Email",
+                              errorBorder: UnderlineInputBorder(
+                                borderRadius: BorderRadius.circular(6.0),
+                                borderSide: BorderSide(
+                                  color: Colors.red,
                                 ),
-                                SizedBox(height: 10),
-                                TextField(
-                                  onChanged: (text) => {password = text},
-                                  obscureText: true,
-                                  decoration: const InputDecoration(
-                                    label: Text('Password'),
-                                    border: OutlineInputBorder(),
-                                  ),
-                                ),
-                                SizedBox(height: 15),
-                                Container(
-                                  width: double.infinity,
-                                  child: ElevatedButton(
-                                    onPressed: () {
-                                      Navigator.of(context).pushNamed('/home');
-                                    },
-                                    style: raisedButtonStyle,
-                                    child: Text(
-                                      'Entrar',
-                                      textAlign: TextAlign.center,
-                                      selectionColor: Colors.purple[900],
-                                    ),
-                                  ),
-                                )
-                              ],
+                              ),
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ),
+                          SizedBox(height: 8.0),
+                          TextFormField(
+                            controller: _passwordTextController,
+                            focusNode: _focusPassword,
+                            obscureText: true,
+                            validator: (value) => Validator.validatePassword(
+                              password: value,
+                            ),
+                            decoration: InputDecoration(
+                              hintText: "Password",
+                              errorBorder: UnderlineInputBorder(
+                                borderRadius: BorderRadius.circular(6.0),
+                                borderSide: BorderSide(
+                                  color: Colors.red,
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 24.0),
+                          _isProcessing
+                              ? CircularProgressIndicator()
+                              : Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Expanded(
+                                      child: ElevatedButton(
+                                        style: raisedButtonStyle,
+                                        onPressed: () async {
+                                          _focusEmail.unfocus();
+                                          _focusPassword.unfocus();
+
+                                          if (_formKey.currentState!
+                                              .validate()) {
+                                            setState(() {
+                                              _isProcessing = true;
+                                            });
+
+                                            User? user = await FireAuth
+                                                .signInUsingEmailPassword(
+                                              email: _emailTextController.text,
+                                              password:
+                                                  _passwordTextController.text,
+                                            );
+
+                                            setState(() {
+                                              _isProcessing = false;
+                                            });
+
+                                            if (user != null) {
+                                              Navigator.of(context)
+                                                  .pushReplacement(
+                                                MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      HomePage(
+                                                    title: 'IntelliCode',
+                                                    user: user,
+                                                  ),
+                                                ),
+                                              );
+                                            }
+                                          }
+                                        },
+                                        child: Text(
+                                          'Sign In',
+                                          style: TextStyle(color: Colors.black),
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(width: 24.0),
+                                    Expanded(
+                                      child: ElevatedButton(
+                                        style: raisedButtonStyle,
+                                        onPressed: () {
+                                          Navigator.of(context).push(
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  RegisterPage(),
+                                            ),
+                                          );
+                                        },
+                                        child: Text(
+                                          'Register',
+                                          style: TextStyle(color: Colors.black),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                )
+                        ],
+                      ),
+                    )
+                  ],
                 ),
               );
             }
+
             return Center(
               child: CircularProgressIndicator(),
             );
-          }),
+          },
+        ),
+      ),
     );
   }
 }

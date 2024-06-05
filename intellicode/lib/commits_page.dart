@@ -16,7 +16,6 @@ class _CommitsPageState extends State<CommitsPage> {
       //drawer: CustomDrawer(),
       appBar: AppBar(
         title: Text(widget.title),
-        //actions: const [CustomNotify()],
         shadowColor: Colors.red,
         backgroundColor: Colors.purple,
       ),

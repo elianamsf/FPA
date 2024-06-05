@@ -13,10 +13,8 @@ class _NotificacaoPageState extends State<NotificacaoPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //drawer: CustomDrawer(),
       appBar: AppBar(
         title: Text(widget.title),
-        //actions: const [CustomNotify()],
         shadowColor: Colors.red,
         backgroundColor: Colors.purple,
       ),
