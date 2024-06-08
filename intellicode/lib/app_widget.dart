@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:intellicode/app_controller.dart';
-import 'package:intellicode/commit_page.dart';
-import 'package:intellicode/commits_page.dart';
-import 'package:intellicode/login_page.dart';
-import 'package:intellicode/notificacao_page.dart';
-import 'package:intellicode/notificacoes_page.dart';
+import 'package:intellicode/controller/app_controller.dart';
+import 'package:intellicode/view/commits_page.dart';
+import 'package:intellicode/view/login_page.dart';
+import 'package:intellicode/view/notificacao_page.dart';
+import 'package:intellicode/view/notificacoes_page.dart';
 
 class AppWidget extends StatelessWidget {
   final String title;
@@ -29,9 +28,6 @@ class AppWidget extends StatelessWidget {
               ),
           '/notificacoes': (context) => const NotificacoesPage(
                 title: 'Notificações',
-              ),
-          '/commit': (context) => const CommitPage(
-                title: 'Commit ',
               ),
           '/notificacao': (context) => const NotificacaoPage(
                 title: 'Notificação',

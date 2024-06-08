@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:intellicode/app_controller.dart';
+import 'package:intellicode/controller/app_controller.dart';
 
 class CustomSwitch extends StatelessWidget {
   const CustomSwitch({super.key});
@@ -22,7 +22,10 @@ class CustomNotify extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
         IconButton(
-          icon: const Icon(Icons.notifications),
+          icon: const Icon(
+            Icons.notifications,
+            size: 30.0,
+          ),
           tooltip: 'Notificações',
           onPressed: () {
             Navigator.of(context).pushNamed('/notificacoes');

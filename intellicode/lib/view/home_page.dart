@@ -1,9 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:intellicode/app_controller.dart';
+import 'package:intellicode/controller/app_controller.dart';
 import 'package:intellicode/components.dart';
-import 'package:intellicode/login_page.dart';
-import 'package:intellicode/profile_page.dart';
+import 'package:intellicode/data/commit_dashboard_data.dart';
+import 'package:intellicode/view/login_page.dart';
+import 'package:intellicode/view/profile_page.dart';
 import 'package:stack_chart/stack_chart.dart';
 
 class MacStackedChart extends StatelessWidget {
@@ -33,109 +34,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<ChartData> chartData = [
-    ChartData("2023-02-12 10:00:00", "2023-02-12 11:00:00", [
-      "Buggy",
-      "Clean",
-      "Buggy",
-      "Clean",
-      "Not defined",
-      "Not defined",
-    ]),
-    ChartData("2023-02-13 11:00:00", "2023-02-13 12:00:00", [
-      "Buggy",
-      "Clean",
-      "Clean",
-      "Not defined",
-      "Buggy",
-      "Not defined",
-    ]),
-    ChartData("2023-02-14 12:00:00", "2023-02-14 13:00:00", [
-      "Buggy",
-      "Clean",
-      "Not defined",
-      "Clean",
-      "Buggy",
-      "Not defined",
-    ]),
-    ChartData("2023-02-15 13:00:00", "2023-02-15 14:00:00", [
-      "Buggy",
-      "Not defined",
-      "Clean",
-      "Buggy",
-      "Clean",
-      "Not defined",
-    ]),
-    ChartData("2023-02-16 14:00:00", "2023-02-16 15:00:00", [
-      "Buggy",
-      "Clean",
-      "Clean",
-      "Not defined",
-      "Buggy",
-      "Not defined",
-    ]),
-    ChartData("2023-02-17 15:00:00", "2023-02-17 16:00:00", [
-      "Buggy",
-      "Clean",
-      "Not defined",
-      "Not defined",
-      "Buggy",
-      "Clean",
-    ]),
-    ChartData("2023-02-18 10:00:00", "2023-02-18 11:00:00", [
-      "Buggy",
-      "Clean",
-      "Buggy",
-      "Clean",
-      "Not defined",
-      "Not defined",
-    ]),
-    ChartData("2023-02-19 11:00:00", "2023-02-19 12:00:00", [
-      "Buggy",
-      "Clean",
-      "Clean",
-      "Not defined",
-      "Buggy",
-      "Not defined",
-    ]),
-    ChartData("2023-02-20 12:00:00", "2023-02-20 13:00:00", [
-      "Buggy",
-      "Clean",
-      "Not defined",
-      "Clean",
-      "Buggy",
-      "Not defined",
-    ]),
-    ChartData("2023-02-21 13:00:00", "2023-02-21 14:00:00", [
-      "Buggy",
-      "Not defined",
-      "Clean",
-      "Buggy",
-      "Clean",
-      "Not defined",
-    ]),
-    ChartData("2023-02-22 14:00:00", "2023-02-22 15:00:00", [
-      "Buggy",
-      "Clean",
-      "Clean",
-      "Not defined",
-      "Buggy",
-      "Not defined",
-    ]),
-    ChartData("2023-02-23 15:00:00", "2023-02-23 16:00:00", [
-      "Buggy",
-      "Clean",
-      "Not defined",
-      "Not defined",
-      "Buggy",
-      "Clean",
-    ]),
-  ];
-  List<ChartLabel> chartLabel = [
-    ChartLabel("Buggy", Colors.red),
-    ChartLabel("Clean", Colors.green),
-    ChartLabel("Not defined", Colors.blue),
-  ];
+  List<ChartData> chartData = chartDataBase;
+  List<ChartLabel> chartLabel = chartLabelBase;
 
   ChartText chartText = ChartText("1 Commit", Colors.amber);
 
@@ -184,7 +84,10 @@ class _HomePageState extends State<HomePage> {
               height: 5.0,
             ),
             ListTile(
-              leading: Icon(Icons.home),
+              leading: Icon(
+                Icons.home,
+                size: 30.0,
+              ),
               title: Text('Inicio'),
               subtitle: Text('Tela de início'),
               onTap: () async {
@@ -196,7 +99,10 @@ class _HomePageState extends State<HomePage> {
               },
             ),
             ListTile(
-                leading: Icon(Icons.person),
+                leading: Icon(
+                  Icons.person,
+                  size: 30.0,
+                ),
                 title: Text('Perfil'),
                 subtitle: Text('Ver informações Pessoais'),
                 onTap: () async {
@@ -206,24 +112,36 @@ class _HomePageState extends State<HomePage> {
                   );
                 }),
             ListTile(
-              leading: Icon(Icons.commit),
+              leading: Icon(
+                Icons.commit,
+                size: 30.0,
+              ),
               title: Text('Commits'),
               subtitle: Text('Status dos Commits'),
               onTap: () => Navigator.of(context).pushNamed('/commits'),
             ),
             ListTile(
-              leading: Icon(Icons.notifications),
+              leading: Icon(
+                Icons.notifications,
+                size: 30.0,
+              ),
               title: Text('Notificaçoes'),
               subtitle: Text('Histórico de Notificações'),
               onTap: () => Navigator.of(context).pushNamed('/notificacoes'),
             ),
             ListTile(
-                leading: Icon(Icons.mode_night),
+                leading: Icon(
+                  Icons.mode_night,
+                  size: 30.0,
+                ),
                 title: Text('Modo escuro'),
                 subtitle: Text('Alternar em modo escuro ou claro'),
                 onTap: () => AppController.instance.changeTheme()),
             ListTile(
-              leading: Icon(Icons.logout),
+              leading: Icon(
+                Icons.logout,
+                size: 30.0,
+              ),
               title: Text('Sair'),
               subtitle: Text('Finalizar Sessão'),
               onTap: () async {
