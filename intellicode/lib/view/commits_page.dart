@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:intellicode/model/commit.dart';
 import 'package:intellicode/view/commit_page.dart';
 import 'package:intellicode/data/commit_data.dart';
-import 'package:intellicode/reset_password.dart';
 
 class CommitsPage extends StatefulWidget {
   const CommitsPage({super.key, required this.title});
@@ -29,7 +28,7 @@ class _CommitsPageState extends State<CommitsPage> {
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: ListTile(
-                  title: Text('Commit ${index + 1}',
+                  title: Text('Commit ${commitList[index].title()!}',
                       style: TextStyle(fontSize: 22.0)),
                   subtitle: Text('Clique para mais detalhes',
                       style: TextStyle(fontSize: 20.0)),

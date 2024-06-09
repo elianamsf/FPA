@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intellicode/controller/app_controller.dart';
-import 'package:intellicode/components.dart';
+import 'package:intellicode/view/components.dart';
 import 'package:intellicode/data/commit_dashboard_data.dart';
 import 'package:intellicode/view/login_page.dart';
 import 'package:intellicode/view/profile_page.dart';

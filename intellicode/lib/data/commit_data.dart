@@ -2,6 +2,7 @@ import 'package:intellicode/model/commit.dart';
 
 List<Commit> commitListBase = [
   Commit(
+      '00001',
       'feature 001',
       'Clean',
       0.00,
@@ -10,6 +11,7 @@ List<Commit> commitListBase = [
       "2023-02-17 10:00:00",
       ['Pushed', 'Predicted', 'Status Defined', 'Clean']),
   Commit(
+      '00002',
       'feature 002',
       'Clean',
       0.01,
@@ -18,6 +20,7 @@ List<Commit> commitListBase = [
       "2023-02-18 10:00:00",
       ['Pushed', 'Predicted', 'Status Defined', 'Clean']),
   Commit(
+      '00003',
       'feature 003',
       'Buggy',
       1.0,
@@ -26,6 +29,7 @@ List<Commit> commitListBase = [
       "2023-02-19 10:00:00",
       ['Pushed', 'Predicted', 'Status Defined', 'Buggy']),
   Commit(
+      '00004',
       'feature 004',
       'Clean',
       0.15,
@@ -34,6 +38,7 @@ List<Commit> commitListBase = [
       "2023-02-20 10:00:00",
       ['Pushed', 'Predicted', 'Status Defined', 'Clean']),
   Commit(
+      '00005',
       'feature 005',
       'Clean',
       0.20,
@@ -42,6 +47,7 @@ List<Commit> commitListBase = [
       "2023-02-21 10:00:00",
       ['Pushed', 'Predicted', 'Status Defined', 'Clean']),
   Commit(
+      '00006',
       'feature 006',
       'Buggy',
       0.31,
@@ -50,6 +56,7 @@ List<Commit> commitListBase = [
       "2023-02-22 10:00:00",
       ['Pushed', 'Predicted', 'Status Defined', 'Buggy']),
   Commit(
+      '00007',
       'feature 007',
       'Buggy',
       0.35,
@@ -58,6 +65,7 @@ List<Commit> commitListBase = [
       "2023-02-23 10:00:00",
       ['Pushed', 'Predicted', 'Status Defined', 'Buggy']),
   Commit(
+      '00008',
       'feature 008',
       'Clean',
       0.03,
@@ -66,6 +74,7 @@ List<Commit> commitListBase = [
       "2023-02-24 10:00:00",
       ['Pushed', 'Predicted', 'Status Defined', 'Clean']),
   Commit(
+      '00009',
       'feature 009',
       'Clean',
       0.11,
@@ -74,6 +83,7 @@ List<Commit> commitListBase = [
       "2023-02-25 10:00:00",
       ['Pushed', 'Predicted', 'Status Defined', 'Clean']),
   Commit(
+      '00010',
       'feature 010',
       'Clean',
       0.12,
@@ -82,6 +92,7 @@ List<Commit> commitListBase = [
       "2023-02-26 10:00:00",
       ['Pushed', 'Predicted', 'Status Defined', 'Clean']),
   Commit(
+      '00011',
       'feature 011',
       'Clean',
       0.22,
@@ -90,6 +101,7 @@ List<Commit> commitListBase = [
       "2023-02-27 10:00:00",
       ['Pushed', 'Predicted', 'Status Defined', 'Clean']),
   Commit(
+      '00012',
       'feature 012',
       'Buggy',
       0.45,
@@ -98,6 +110,7 @@ List<Commit> commitListBase = [
       "2023-02-28 10:00:00",
       ['Pushed', 'Predicted', 'Status Defined', 'Buggy']),
   Commit(
+      '00013',
       'feature 013',
       'Not Defined',
       0.0,
@@ -106,6 +119,7 @@ List<Commit> commitListBase = [
       "",
       ['Pushed', 'Predicted', 'Under Analysis', 'Not Defined']),
   Commit(
+      '00014',
       'feature 014',
       'Not Defined',
       0.0,
@@ -114,6 +128,7 @@ List<Commit> commitListBase = [
       "",
       ['Pushed', 'Predicted', 'Under Analysis', 'Not Defined']),
   Commit(
+      '00015',
       'feature 015',
       'Not Defined',
       0.0,
@@ -122,6 +137,7 @@ List<Commit> commitListBase = [
       "",
       ['Pushed', 'Predicted', 'Under Analysis', 'Not Defined']),
   Commit(
+      '00016',
       'feature 016',
       'Not Defined',
       0.0,
@@ -130,6 +146,7 @@ List<Commit> commitListBase = [
       "",
       ['Pushed', 'Predicted', 'Under Analysis', 'Not Defined']),
   Commit(
+      '00017',
       'feature 017',
       'Not Defined',
       0.0,
@@ -138,6 +155,7 @@ List<Commit> commitListBase = [
       "",
       ['Pushed', 'Predicted', 'Under Analysis', 'Not Defined']),
   Commit(
+      '00018',
       'feature 018',
       'Not Defined',
       0.0,
@@ -146,6 +164,7 @@ List<Commit> commitListBase = [
       "",
       ['Pushed', 'Predicted', 'Under Analysis', 'Not Defined']),
   Commit(
+      '00019',
       'feature 019',
       'Not Defined',
       0.0,
@@ -154,6 +173,7 @@ List<Commit> commitListBase = [
       "",
       ['Pushed', 'Predicted', 'Under Analysis', 'Not Defined']),
   Commit(
+      '00020',
       'feature 020',
       'Not Defined',
       0.0,

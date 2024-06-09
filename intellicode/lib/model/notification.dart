@@ -2,14 +2,20 @@ import 'commit.dart';
 
 class NotificationCommit {
   String? _title;
+  String? _subtitle;
   String? _status;
   String? _date;
-  Commit? _commit;
+  String? _idCommit;
 
-  NotificationCommit();
+  NotificationCommit(
+      this._title, this._subtitle, this._status, this._date, this._idCommit);
 
   String? title() {
     return _title;
+  }
+
+  String? subtitle() {
+    return _subtitle;
   }
 
   String? status() {
@@ -20,12 +26,16 @@ class NotificationCommit {
     return _date;
   }
 
-  Commit? commit() {
-    return _commit;
+  String? commit() {
+    return _idCommit;
   }
 
   set setTitle(String title) {
     _title = title;
+  }
+
+  set setSubTitle(String subtitle) {
+    _subtitle = _subtitle;
   }
 
   set setStatus(String status) {
@@ -36,7 +46,7 @@ class NotificationCommit {
     _date = date;
   }
 
-  set setCommit(Commit commit) {
-    _commit = commit;
+  set setCommit(Commit idCommit) {
+    _idCommit = _idCommit;
   }
 }

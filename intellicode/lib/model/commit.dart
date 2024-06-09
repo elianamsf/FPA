@@ -1,4 +1,5 @@
 class Commit {
+  String? _id;
   String? _title;
   String? _status;
   double? _prediction;
@@ -7,8 +8,19 @@ class Commit {
   String? _dateStatusDefined;
   List<String?> timelineStatusList;
 
-  Commit(this._title, this._status, this._prediction, this._datePushed,
-      this._datePredict, this._dateStatusDefined, this.timelineStatusList);
+  Commit(
+      this._id,
+      this._title,
+      this._status,
+      this._prediction,
+      this._datePushed,
+      this._datePredict,
+      this._dateStatusDefined,
+      this.timelineStatusList);
+
+  String? id() {
+    return _id;
+  }
 
   String? title() {
     return _title;
@@ -32,6 +44,10 @@ class Commit {
 
   String? dateStatusDefined() {
     return _dateStatusDefined;
+  }
+
+  set setId(String id) {
+    _id = id;
   }
 
   set setTitle(String title) {

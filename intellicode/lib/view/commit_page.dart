@@ -3,7 +3,7 @@ import 'package:intellicode/model/commit.dart';
 import 'package:intellicode/controller/commit_controller.dart';
 import 'package:timelines/timelines.dart';
 
-const kTileHeight = 50.0;
+const kTileHeight = 100.0;
 
 class CommitPage extends StatefulWidget {
   const CommitPage({super.key, required this.commit});
@@ -44,6 +44,7 @@ class _CommitPageState extends State<CommitPage> {
                 const EdgeInsets.only(left: 50, right: 50, top: 20, bottom: 12),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Container(
                   width: 200,
@@ -91,7 +92,7 @@ class _Timeline1 extends StatelessWidget {
             size: 45.0,
           ),
         ),
-        padding: EdgeInsets.symmetric(vertical: 20.0),
+        padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
         builder: TimelineTileBuilder.connected(
           contentsBuilder: (context, index) => Card(
             child: Padding(

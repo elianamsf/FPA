@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:intellicode/controller/commit_controller.dart';
+import 'package:intellicode/data/commit_data.dart';
+import 'package:intellicode/data/notificacao_data.dart';
 import 'package:intellicode/model/commit.dart';
-import 'package:intellicode/view/notificacao_page.dart';
+import 'package:intellicode/model/notification.dart';
 
 import 'commit_page.dart';
 
@@ -14,7 +17,9 @@ class NotificacoesPage extends StatefulWidget {
 }
 
 class _NotificacoesPageState extends State<NotificacoesPage> {
-  late Commit commit;
+  List<Commit> commitList = commitListBase;
+  late List<NotificationCommit> notificationList = notificationListBase;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,18 +35,20 @@ class _NotificacoesPageState extends State<NotificacoesPage> {
                 child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: ListTile(
-                title: Text('Notificação ${index + 1}',
+                title: Text(notificationList[index].title()!,
                     style: TextStyle(fontSize: 22.0)),
-                subtitle: const Text('Clique para mais detalhes',
+                subtitle: Text(notificationList[index].subtitle()!,
                     style: TextStyle(fontSize: 22.0)),
                 leading: const Icon(
                   Icons.notifications,
                   size: 30.0,
                 ),
-                onTap: () => Navigator.of(context).pushReplacement(
+                onTap: () => Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) => CommitPage(
-                      commit: commit,
+                      commit: getCommitById(
+                        notificationList[index].commit()!,
+                      ),
                     ),
                   ),
                 ),
