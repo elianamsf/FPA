@@ -30,9 +30,9 @@ class _CommitsPageState extends State<CommitsPage> {
                 child: ListTile(
                   title: Text('Commit ${commitList[index].title()!}',
                       style: TextStyle(fontSize: 22.0)),
-                  subtitle: Text('Clique para mais detalhes',
+                  subtitle: const Text('Clique para mais detalhes',
                       style: TextStyle(fontSize: 20.0)),
-                  leading: Icon(
+                  leading: const Icon(
                     Icons.commit,
                     size: 36.0,
                   ),
@@ -41,9 +41,6 @@ class _CommitsPageState extends State<CommitsPage> {
                       builder: (context) => CommitPage(
                         commit: commitList[index],
                       ),
-                      /*
-                        builder: (context) => ProcessTimelinePage()
-                       */
                     ),
                   ),
                 ),
